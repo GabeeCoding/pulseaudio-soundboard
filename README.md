@@ -92,6 +92,8 @@ This works with the yt script as everything that you downloaded through it, will
 
 This script shows you a menu with all a list of the sound files, and if you type a part of the file name it will play it. Remember to toggle listening to confirm
 
+(Requires `zenity` to be installed)
+
 ```
 bindsym ISO_Level3_Shift exec bash ~/soundboard/choosesong.sh
 ```
@@ -108,9 +110,9 @@ You need to make sure your apps to use the Default mic option, because the mic s
 
 ## How the audio routing works
 
-VirtualSink (speaker) ===loopback===> VirtualSource (speaker) ===remap===> VirtualMic (mic)
+Command to play a sound ===> VirtualSink (speaker) ===loopback module===> VirtualSource (speaker) ===remap===> VirtualMic (mic)
 
-1. VirtualSink is created as a virtual speaker device
-2. VirtualSource is created as another virtual speaker device
+1. paplay command is used to put in sound to the VirtualSink device
+1. VirtualSink is a virtual speaker device
+2. VirtualSource is another virtual speaker device
 3. VirtualSource is converted to a virtual microphone with remap, becoming VirtualMic
-
