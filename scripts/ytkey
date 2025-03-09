@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -x
+#--audio-quality 10
+search=$(zenity --entry --text='yt soundboard')
+
+histfile=~/soundboard/histfile.txt
+
+echo "$search" >> "$histfile"
+
+#location=/tmp/song_soundboard.wav
+#each song has its own unique file name
+#so that we get to save them later if we want
+location="$HOME/soundboard/selection/${search}.wav"
+
+rm "$location"
+yt-dlp -f bestaudio --audio-quality 10 --max-downloads 1 -o - ytsearch:"$search" | ffmpeg -i - -f wav "$location" 
+
+paplay --device=VirtualSink "$location"
