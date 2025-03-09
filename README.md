@@ -13,7 +13,7 @@ For this guide I am using the i3 window manager which makes it very easy to run 
 - The pulseaudio sound system is actually being used
 - A way to bind keys to make them run shell scripts
 
-### Step 0 - Prepare folders
+### Step 0 - Prepare folders and scripts
 ```bash
 mkdir ~/soundboard
 #sounds folder, this is where the sounds for keys will go
@@ -24,6 +24,8 @@ mkdir ~/soundboard/selection
 #copy over the scripts from this repo to the soundboard folder
 cp -v ./scripts/* ~/soundboard
 ```
+
+You also need to edit the `togglemix.sh` script, on the line where the module is loaded, change the source to your real mic input device name (step 2 shows how to find it)
 
 ### Step 1 - Initialise audio devices
 

@@ -29,7 +29,7 @@ set_soundboard_volume(){
 	done
 }
 
-already_there=$(pactl list modules short | grep -E "module-loopback.*source=alsa_input.pci.*Mic1.*sink=VirtualSource")
+already_there=$(pactl list modules short | grep -E "module-loopback.*source=.*sink=VirtualSource")
 if [ $? -eq 0 ]; then
 	#The routing is already there, nuke it
 	id=$(awk '{print $1}' <<< $already_there)
